@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velma Jones | Portfolio | Web Developer</title>
+
+    <style>
+        :root {
+            --primary-color: #f8f8f8; 
+            --secondary-color: #a87676; 
+            --background-color: #ced5db; 
+            --text-color: #070707;
+            --white-color: #222020;
+            --font-family: 'Arial', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            scroll-behavior: smooth; 
+        }
+
+        header {
+            background: var(--white-color);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: right;
+            position: fixed; 
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(110, 110, 110, 0.63);
+        }
+
+        .logo {
+            font-size: 1.6em;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--secondary-color);
+            padding: 10px 18px;
+            display: block;
+            font-weight: 500;
+            transition: color 0.3s, border-bottom 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .section {
+            padding: 100px 5% 60px;
+            text-align: center;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        h2 {
+            font-size: 2.5em;
+            margin-bottom: 50px;
+            color: var(--secondary-color);
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--primary-color);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .hero {
+            background: var(--secondary-color);
+            color: var(--white-color);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-size: 4em;
+            margin-bottom: 0.1em;
+        }
+
+        .hero-content h2 {
+            font-size: 1.8em;
+            color: var(--primary-color);
+            margin-bottom: 1em;
+        }
+
+        .hero-content p {
+            font-size: 1.1em;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: #a4a4b2;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: var(--white-color);
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            transition: background 0.3s, transform 0.2s;
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn:hover {
+            background: #6e6f6f; 
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(211, 208, 208, 0.2);
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .skill-item {
+            background: var(--white-color);
+            padding: 12px 25px;
+            border-radius: 30px;
+            border: 1px solid #dcdcdc;
+            color: var(--secondary-color);
+            font-weight: 600;
+            box-shadow: 0 2px 5px rgba(231, 163, 163, 0.203);
+            transition: background 0.3s, color 0.3s, transform 0.2s;
+        }
+
+        .skill-item:hover {
+            background: var(--primary-color);
+            color: var(--white-color);
+            transform: translateY(-2px);
+        }
+
+        #projects {
+            background-color: var(--white-color);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .project-card {
+            background: var(--white-color);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #eee;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .project-card h3 {
+            padding: 15px 20px 5px;
+            color: var(--primary-color);
+            font-size: 1.5em;
+        }
+
+        .project-card p {
+            padding: 0 20px 15px;
+            font-size: 1em;
+            color: #555;
+        }
+
+        .project-links {
+            padding: 0 20px 20px;
+        }
+
+        .link-btn {
+            display: inline-block;
+            padding: 8px 15px;
+            margin-right: 10px;
+            background: var(--secondary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.9em;
+            transition: opacity 0.3s;
+        }
+
+        .link-btn:hover {
+            opacity: 0.9;
+        }
+
+        #contact {
+            background-color: var(--background-color);
+        }
+
+        .contact-links {
+            margin-top: 40px;
+        }
+
+        .contact-btn {
+            margin: 10px;
+        }
+
+        footer {
+            background: var(--secondary-color);
+            color: var(--white-color);
+            text-align: center;
+            padding: 25px 0;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 800px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+                position: static;
+                padding: 10px 5%;
+            }
+
+            .logo {
+                margin-bottom: 10px;
+            }
+
+            nav ul {
+                width: 100%;
+                justify-content: center;
+            }
+
+            nav ul li a {
+                padding: 10px 12px;
+            }
+
+            .hero-content h1 {
+                font-size: 3em;
+            }
+
+            .hero-content h2 {
+                font-size: 1.5em;
+            }
+
+            .section {
+                padding: 60px 5%;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    </head>
+<body>
+
+    <header>
+        <div class="logo">Velma Jones</div>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="about" class="hero">
+        <div class="hero-content">
+            <h1>Hi, I'm Velma Jones</h1>
+            <h2>A passionate web developer based in Nairobi,Kenya.</h2>
+            <p>I build elegant, responsive, and user-friendly websites and applications, turning complex ideas into seamless digital experiences. Let's create something amazing together.</p>
+            <a href="#projects" class="btn">View My Work</a>
+        </div>
+    </section>
+
+    <section id="skills" class="section">
+        <h2>My Skills</h2>
+        <div class="skills-container">
+            <div class="skill-item">HTML5 & CSS3</div>
+            <div class="skill-item">JavaScript (ES6+)</div>
+            <div class="skill-item">React / Vue.js</div>
+            <div class="skill-item">Node.js / Express</div>
+            <div class="skill-item">Python / Django</div>
+            <div class="skill-item">SQL / MongoDB</div>
+            <div class="skill-item">Git & GitHub</div>
+            <div class="skill-item">Responsive Design</div>
+            <div class="skill-item">UI/UX Principles</div>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <h2>Featured Projects</h2>
+        <div class="projects-grid">
+            
+            <div class="project-card">
+                <img src="placeholder-project1.jpg" alt="E-Commerce Website Mockup">
+                <h3>E-Commerce Platform Redesign</h3>
+                <p>A full-stack application demonstrating modern shopping cart functionality, user authentication, and payment integration.</p>
+                <div class="project-links">
+                    <a href="#" target="_blank" class="link-btn">View Live</a>
+                    <a href="#" target="_blank" class="link-btn">GitHub</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="placeholder-project2.jpg" alt="Data Visualization Dashboard">
+                <h3>Interactive Data Dashboard</h3>
+                <p>Built with React and D3.js to visualize complex data sets in real-time, focusing on performance and user-friendliness.</p>
+                <div class="project-links">
+                    <a href="#" target="_blank" class="link-btn">View Live</a>
+                    <a href="#" target="_blank" class="link-btn">GitHub</a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <img src="placeholder-project3.jpg" alt="Mobile Game Concept">
+                <h3>Simple Mobile Game Clone</h3>
+                <p>A demonstration of core JavaScript game logic and canvas manipulation, packaged as a lightweight mobile-friendly experience.</p>
+                <div class="project-links">
+                    <a href="#" target="_blank" class="link-btn">View Live</a>
+                    <a href="#" target="_blank" class="link-btn">GitHub</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <h2>Get In Touch</h2>
+        <p>I'm currently looking for new opportunities and collaborations. My inbox is always open—I'd love to chat about development, design, or anything else!</p>
+        <div class="contact-links">
+            <a href="mailto:velmajones@gmail.com" class="contact-btn btn">Email Me</a>
+            <a href="#" target=VelmaJonesKirubi class="contact-btn btn">LinkedIn</a>
+            <a href="#" target=jon-vk class="contact-btn btn">GitHub</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; <span id="current-year"></span> Linet Kimani (E156/1338/2024). All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
